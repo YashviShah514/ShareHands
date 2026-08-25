@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share Hands – NGO Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    /* NGO-specific purple accent overrides */
+    .sidebar { background: #1a2744; }
+    .nav-item.active { background: #4c2d8a; box-shadow: 0 4px 12px rgba(123,94,167,.4); }
+    .breadcrumb .current { color: #7b5ea7; }
+    .topbar-title span { color: #7b5ea7; }
+    .btn-primary { background: var(--purple); }
+    .btn-primary:hover { background: #6b4d9a; }
+    .settings-nav-item.active { background: #f3e8ff; color: #6d28d9; }
+    .toggle input:checked + .toggle-track { background: var(--purple); }
+    .filter-btn:hover, .filter-btn.active { background: var(--purple); border-color: var(--purple); }
+  </style>
+</head>
+<body>
+<div class="dashboard-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo" style="border-bottom-color:rgba(255,255,255,.1)">
+      <div class="logo-icon" style="background:#7b5ea7">🏢</div>
+      <h1 style="color:#fff">Share<span style="color:#a78bfa">Hands</span></h1>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">NGO Portal</div>
+      <div class="nav-item active" onclick="showPage('ngo','dashboard',this)"><i class="fas fa-th-large"></i>Dashboard</div>
+      <div class="nav-item" onclick="showPage('ngo','requests',this)"><i class="fas fa-hand-holding-heart"></i>My Requests<span class="badge" style="background:#7b5ea7">8</span></div>
+      <div class="nav-item" onclick="showPage('ngo','available',this)"><i class="fas fa-box-open"></i>Available Items</div>
+      <div class="nav-item" onclick="showPage('ngo','beneficiaries',this)"><i class="fas fa-users"></i>Beneficiaries</div>
+      <div class="nav-item" onclick="showPage('ngo','map',this)"><i class="fas fa-map-marker-alt"></i>Map</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Organization</div>
+      <div class="nav-item" onclick="showPage('ngo','reports',this)"><i class="fas fa-chart-bar"></i>Impact Reports</div>
+      <div class="nav-item" onclick="showPage('ngo','profile',this)"><i class="fas fa-building"></i>NGO Profile</div>
+      <div class="nav-item" onclick="showPage('ngo','settings',this)"><i class="fas fa-cog"></i>Settings</div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="admin-card" style="background:rgba(255,255,255,.06)">
+        <div class="admin-avatar" style="background:#3d2f6e;color:#a78bfa">🏥</div>
+        <div class="admin-info"><h4 style="color:#fff">Hope Foundation</h4><p style="color:rgba(255,255,255,.38)">NGO Partner</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-title">Share<span style="color:#7b5ea7">Hands</span><span class="topbar-badge">NGO Portal</span></div>
+      <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search items, requests…"/></div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="notify('2 new notifications')"><i class="fas fa-bell"></i><div class="dot"></div></button>
+        <div class="topbar-avatar" style="background:#f3e8ff;border-color:#7b5ea7">🏥</div>
+        <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i>Logout</button>
+      </div>
+    </div>
+
+    <!-- ════ DASHBOARD ════ -->
+    <div class="page active" id="ngo-page-dashboard">
+      <div class="page-header">
+        <div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Dashboard</span></div>
+        <h2>Hope Foundation Dashboard 🏥</h2>
+        <p>Welcome back! Here's your organization's overview.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card purple"><div class="stat-icon purple">📋</div><div class="stat-value">47</div><div class="stat-label">Total Requests</div><div class="stat-change up"><i class="fas fa-arrow-up"></i>+6 this month</div></div>
+        <div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-value">39</div><div class="stat-label">Fulfilled</div><div class="stat-change up"><i class="fas fa-arrow-up"></i>83% rate</div></div>
+        <div class="stat-card orange"><div class="stat-icon orange">⏳</div><div class="stat-value">8</div><div class="stat-label">Pending</div></div>
+        <div class="stat-card blue"><div class="stat-icon blue">👨‍👩‍👧‍👦</div><div class="stat-value">412</div><div class="stat-label">Beneficiaries</div><div class="stat-change up"><i class="fas fa-arrow-up"></i>+28</div></div>
+      </div>
+
+      <!-- Impact banner -->
+      <div style="background:linear-gradient(135deg,#1a2744,#2d3a7a);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:20px;color:white">
+        <div style="font-size:44px">🌟</div>
+        <div style="flex:1">
+          <div style="font-size:15px;font-weight:700;margin-bottom:3px">Verified NGO Partner</div>
+          <div style="font-size:12.5px;opacity:.65">Hope Foundation has served <strong style="opacity:1">412 beneficiaries</strong> across 3 cities through Share Hands.</div>
+          <div style="display:flex;gap:18px;margin-top:10px">
+            <div><div style="font-size:18px;font-weight:800;color:#a78bfa">39</div><div style="font-size:10px;opacity:.55">Items Received</div></div>
+            <div><div style="font-size:18px;font-weight:800;color:#a78bfa">3</div><div style="font-size:10px;opacity:.55">Cities</div></div>
+            <div><div style="font-size:18px;font-weight:800;color:#a78bfa">4.8⭐</div><div style="font-size:10px;opacity:.55">Rating</div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn" style="background:#7b5ea7;color:#fff;font-size:12px" onclick="showPage('ngo','requests',null)">📋 Submit Request</button>
+          <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3);font-size:12px" onclick="showPage('ngo','reports',null)">📊 View Report</button>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <div class="section-header"><div class="section-title">Recent Requests</div><button class="btn btn-outline" onclick="showPage('ngo','requests',null)">View All</button></div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div class="ngo-request-card"><div class="ngo-req-icon">🛏️</div><div class="ngo-req-info"><div class="ngo-req-name">Beds (x5)</div><div class="ngo-req-desc">For shelter program — 5 families need beds</div><div class="ngo-req-meta"><span><i class="fas fa-map-marker-alt"></i>Downtown</span><span><i class="fas fa-calendar"></i>Apr 4</span></div></div><span class="badge-status pending" style="flex-shrink:0">Pending</span></div>
+            <div class="ngo-request-card"><div class="ngo-req-icon">👕</div><div class="ngo-req-info"><div class="ngo-req-name">Winter Clothing (x20)</div><div class="ngo-req-desc">For 20 underprivileged children</div><div class="ngo-req-meta"><span><i class="fas fa-map-marker-alt"></i>North</span><span><i class="fas fa-calendar"></i>Apr 2</span></div></div><span class="badge-status approved" style="flex-shrink:0">Approved</span></div>
+            <div class="ngo-request-card"><div class="ngo-req-icon">📚</div><div class="ngo-req-info"><div class="ngo-req-name">School Books (x30)</div><div class="ngo-req-desc">For free education program — 30 students</div><div class="ngo-req-meta"><span><i class="fas fa-map-marker-alt"></i>Midtown</span><span><i class="fas fa-calendar"></i>Mar 30</span></div></div><span class="badge-status taken" style="flex-shrink:0">Fulfilled</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-header"><div class="section-title">Activity Feed</div></div>
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon purple">📋</div><div><div class="activity-text"><strong>Beds request</strong> submitted, awaiting approval.</div><div class="activity-time">2 hours ago</div></div></div>
+            <div class="activity-item"><div class="activity-icon green">✅</div><div><div class="activity-text"><strong>Winter Clothing</strong> request was approved.</div><div class="activity-time">Apr 2, 2025</div></div></div>
+            <div class="activity-item"><div class="activity-icon blue">📦</div><div><div class="activity-text"><strong>30 Textbooks</strong> delivered to Midtown Hub.</div><div class="activity-time">Mar 30, 2025</div></div></div>
+            <div class="activity-item"><div class="activity-icon orange">⭐</div><div><div class="activity-text">Received a <strong>5-star partner rating.</strong></div><div class="activity-time">Mar 25, 2025</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ REQUESTS ════ -->
+    <div class="page" id="ngo-page-requests">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Requests</span></div><h2>Donation Requests</h2><p>Submit and track item requests for your organization.</p></div>
+
+      <!-- Submit New Request -->
+      <div class="card" style="margin-bottom:16px">
+        <div class="section-title" style="margin-bottom:14px">➕ Submit New Request</div>
+        <div class="category-grid">
+          <div class="cat-option selected" onclick="selectCat(this)"><div class="cat-icon">👕</div><div class="cat-label">Clothing</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">📚</div><div class="cat-label">Books</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🛏️</div><div class="cat-label">Furniture</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">💊</div><div class="cat-label">Medical</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🍱</div><div class="cat-label">Food</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">💻</div><div class="cat-label">Electronics</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🧒</div><div class="cat-label">Children</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">📦</div><div class="cat-label">Other</div></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">Item Name</label><input class="form-input-s" placeholder="e.g. Winter Coats, School Books…"/></div>
+          <div class="form-group-s"><label class="form-label-s">Quantity Needed</label><input class="form-input-s" type="number" value="1" min="1"/></div>
+        </div>
+        <div class="form-group-s"><label class="form-label-s">Purpose / Reason</label><textarea class="form-input-s" rows="2" placeholder="Explain why your organization needs this…" style="resize:vertical"></textarea></div>
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">Urgency</label><select class="form-input-s" style="cursor:pointer"><option>High Priority</option><option>Medium Priority</option><option>Low Priority</option></select></div>
+          <div class="form-group-s"><label class="form-label-s">Delivery Location</label><input class="form-input-s" placeholder="Pickup center or address…"/></div>
+        </div>
+        <div style="display:flex;gap:9px;margin-top:4px">
+          <button class="btn btn-primary" onclick="notify('📋 Request submitted! Awaiting admin approval.')">Submit Request</button>
+          <button class="btn btn-outline" onclick="notify('Draft saved')">Save Draft</button>
+        </div>
+      </div>
+
+      <!-- Existing Requests Table -->
+      <div class="card">
+        <div class="section-header"><div class="section-title">All Requests</div></div>
+        <div class="table-wrap"><table><thead><tr><th>Item</th><th>Qty</th><th>Purpose</th><th>Priority</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><div class="item-cell"><div class="item-img">🛏️</div><div><div class="item-name">Beds</div><div class="item-cat">Furniture</div></div></div></td><td>5</td><td style="font-size:11px;color:var(--text-light)">Shelter families</td><td><span class="priority high">High</span></td><td><span class="badge-status pending">Pending</span></td><td style="color:var(--text-light);font-size:11px">Apr 4</td><td><div class="action-btns"><button class="action-btn view" onclick="notify('Viewing')"><i class="fas fa-eye"></i></button><button class="action-btn edit" onclick="notify('Editing')"><i class="fas fa-pen"></i></button></div></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">👕</div><div><div class="item-name">Winter Clothing</div><div class="item-cat">Clothing</div></div></div></td><td>20</td><td style="font-size:11px;color:var(--text-light)">Children drive</td><td><span class="priority medium">Med</span></td><td><span class="badge-status approved">Approved</span></td><td style="color:var(--text-light);font-size:11px">Apr 2</td><td><div class="action-btns"><button class="action-btn view" onclick="notify('Viewing')"><i class="fas fa-eye"></i></button></div></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">📚</div><div><div class="item-name">School Books</div><div class="item-cat">Books</div></div></div></td><td>30</td><td style="font-size:11px;color:var(--text-light)">Free education</td><td><span class="priority low">Low</span></td><td><span class="badge-status taken">Fulfilled</span></td><td style="color:var(--text-light);font-size:11px">Mar 30</td><td><div class="action-btns"><button class="action-btn view" onclick="notify('Viewing')"><i class="fas fa-eye"></i></button></div></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+
+    <!-- ════ AVAILABLE ITEMS ════ -->
+    <div class="page" id="ngo-page-available">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Available Items</span></div><h2>Available Donations</h2><p>Browse items available for your organization to request.</p></div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter(this)">All</button>
+        <button class="filter-btn" onclick="setFilter(this)">👕 Clothing</button>
+        <button class="filter-btn" onclick="setFilter(this)">📚 Books</button>
+        <button class="filter-btn" onclick="setFilter(this)">🛏️ Furniture</button>
+        <button class="filter-btn" onclick="setFilter(this)">💻 Electronics</button>
+        <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:13px" id="ngoBrowseGrid"></div>
+    </div>
+
+    <!-- ════ BENEFICIARIES ════ -->
+    <div class="page" id="ngo-page-beneficiaries">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Beneficiaries</span></div><h2>Beneficiaries</h2><p>People your organization has helped through Share Hands.</p></div>
+      <div class="stats-grid col3">
+        <div class="stat-card purple"><div class="stat-icon purple">👨‍👩‍👧‍👦</div><div class="stat-value">412</div><div class="stat-label">Total Served</div></div>
+        <div class="stat-card"><div class="stat-icon green">📦</div><div class="stat-value">39</div><div class="stat-label">Items Distributed</div></div>
+        <div class="stat-card blue"><div class="stat-icon blue">🌍</div><div class="stat-value">3</div><div class="stat-label">Cities</div></div>
+      </div>
+      <div class="card">
+        <div class="section-header"><div class="section-title">Beneficiary Records</div><button class="btn btn-primary" onclick="notify('Add beneficiary')"><i class="fas fa-plus"></i> Add</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Beneficiary</th><th>Items Received</th><th>City</th><th>Date Helped</th><th>Category</th></tr></thead><tbody>
+          <tr><td><div class="item-cell"><div class="item-img">👦</div><div><div class="item-name">Family #001</div><div class="item-cat">4 members</div></div></div></td><td>Jacket, Books (x3)</td><td>Downtown</td><td style="color:var(--text-light);font-size:11px">Apr 2</td><td><span style="background:#f3e8ff;color:#6d28d9;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600">Clothing</span></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">👩</div><div><div class="item-name">Family #002</div><div class="item-cat">2 members</div></div></div></td><td>Bed Frame, Chair</td><td>Midtown</td><td style="color:var(--text-light);font-size:11px">Mar 30</td><td><span style="background:#fff3e4;color:#c87941;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600">Furniture</span></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">🧑</div><div><div class="item-name">Student #012</div><div class="item-cat">Individual</div></div></div></td><td>School Books (x5)</td><td>North</td><td style="color:var(--text-light);font-size:11px">Mar 28</td><td><span style="background:#dbeafe;color:#1d4ed8;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600">Education</span></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+
+    <!-- ════ MAP ════ -->
+    <div class="page" id="ngo-page-map">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Map</span></div><h2>Donation Locations</h2></div>
+      <div class="map-placeholder"><div class="map-grid"></div><div class="map-pins">
+        <div class="map-pin" style="top:30%;left:25%" onclick="notify('📍 Downtown – 3 items')"><i class="fas fa-map-marker-alt"></i><div class="map-pin-label">Downtown (3)</div></div>
+        <div class="map-pin" style="top:50%;left:55%" onclick="notify('📍 Midtown – 7 items')"><i class="fas fa-map-marker-alt"></i><div class="map-pin-label">Midtown (7)</div></div>
+        <div class="map-pin" style="top:65%;left:38%" onclick="notify('📍 Hope Foundation HQ')"><i class="fas fa-map-marker-alt" style="color:#7b5ea7"></i><div class="map-pin-label">Our HQ 🏥</div></div>
+      </div></div>
+    </div>
+
+    <!-- ════ REPORTS ════ -->
+    <div class="page" id="ngo-page-reports">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Reports</span></div><h2>Impact Reports</h2></div>
+      <div class="impact-card">
+        <h3>🌟 Hope Foundation – Impact Summary</h3>
+        <p>Cumulative impact since joining Share Hands in January 2024</p>
+        <div class="impact-nums">
+          <div><div class="imp-val">412</div><div class="imp-lbl">Beneficiaries</div></div>
+          <div><div class="imp-val">39</div><div class="imp-lbl">Items Received</div></div>
+          <div><div class="imp-val">3</div><div class="imp-lbl">Cities</div></div>
+          <div><div class="imp-val">4.8⭐</div><div class="imp-lbl">Rating</div></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="section-title" style="margin-bottom:12px">Monthly Requests</div>
+          <div class="chart-container" id="ngoChart"></div>
+          <div class="chart-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Requests</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green-light)"></div>Fulfilled</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-title" style="margin-bottom:12px">Items by Category</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-top:6px">
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px"><span>Clothing</span><strong>45%</strong></div><div class="progress-bar-wrap"><div class="progress-bar" style="width:45%;background:var(--purple)"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px"><span>Books</span><strong>30%</strong></div><div class="progress-bar-wrap"><div class="progress-bar" style="width:30%;background:var(--blue)"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px"><span>Furniture</span><strong>15%</strong></div><div class="progress-bar-wrap"><div class="progress-bar" style="width:15%;background:var(--orange)"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:4px"><span>Electronics</span><strong>10%</strong></div><div class="progress-bar-wrap"><div class="progress-bar" style="width:10%;background:var(--red)"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ PROFILE ════ -->
+    <div class="page" id="ngo-page-profile">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Profile</span></div><h2>NGO Profile</h2></div>
+      <div style="background:linear-gradient(135deg,#1a2744,#2d3a7a);border-radius:var(--radius);padding:22px 24px;margin-bottom:16px;display:flex;align-items:center;gap:16px">
+        <div style="width:68px;height:68px;border-radius:16px;background:rgba(123,94,167,.4);display:flex;align-items:center;justify-content:center;font-size:32px">🏥</div>
+        <div>
+          <div style="color:#fff;font-size:18px;font-weight:800">Hope Foundation</div>
+          <div style="color:rgba(255,255,255,.5);font-size:12px">Healthcare &amp; Relief NGO · Verified Partner</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <span style="background:rgba(123,94,167,.3);color:#a78bfa;padding:3px 10px;border-radius:20px;font-size:10.5px;font-weight:600">✅ Verified</span>
+            <span style="background:rgba(82,183,136,.2);color:#52b788;padding:3px 10px;border-radius:20px;font-size:10.5px;font-weight:600">🌍 3 Cities</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title" style="margin-bottom:14px">Organization Details</div>
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">Organization Name</label><input class="form-input-s" value="Hope Foundation"/></div>
+          <div class="form-group-s"><label class="form-label-s">Registration No.</label><input class="form-input-s" value="NGO-2024-001"/></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">Contact Person</label><input class="form-input-s" value="Dr. Karim Mansour"/></div>
+          <div class="form-group-s"><label class="form-label-s">Email</label><input class="form-input-s" value="ngo@sharehands.org"/></div>
+        </div>
+        <div class="form-group-s"><label class="form-label-s">Mission Statement</label><textarea class="form-input-s" rows="2" style="resize:vertical">Providing healthcare, shelter, and essentials to underprivileged families across 3 cities.</textarea></div>
+        <button class="btn btn-primary" onclick="notify('✅ Profile updated!')">Save Changes</button>
+      </div>
+    </div>
+
+    <!-- ════ SETTINGS ════ -->
+    <div class="page" id="ngo-page-settings">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current" style="color:#7b5ea7">Settings</span></div><h2>Settings</h2></div>
+      <div class="settings-grid">
+        <div class="card settings-nav">
+          <div class="settings-nav-item active" onclick="setSettingsTab(this,'profile')">🏢 Organization</div>
+          <div class="settings-nav-item" onclick="setSettingsTab(this,'notifications')">🔔 Notifications</div>
+          <div class="settings-nav-item" onclick="setSettingsTab(this,'security')">🔒 Security</div>
+        </div>
+        <div>
+          <div class="card" id="settings-profile">
+            <div class="section-title" style="margin-bottom:14px">Organization</div>
+            <div class="form-group-s"><label class="form-label-s">Name</label><input class="form-input-s" value="Hope Foundation"/></div>
+            <div class="form-group-s"><label class="form-label-s">Email</label><input class="form-input-s" value="ngo@sharehands.org"/></div>
+            <button class="btn btn-primary" style="margin-top:4px" onclick="notify('✅ Saved!')">Save</button>
+          </div>
+          <div class="card" id="settings-notifications" style="display:none">
+            <div class="section-title" style="margin-bottom:14px">Notifications</div>
+            <div class="toggle-row"><div class="toggle-info"><h4>Request Updates</h4><p>Notify when status changes</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>
+            <div class="toggle-row"><div class="toggle-info"><h4>New Donations</h4><p>Alert on available items</p></div><label class="toggle"><input type="checkbox" checked/><div class="toggle-track"></div><div class="toggle-thumb"></div></label></div>
+            <button class="btn btn-primary" style="margin-top:14px" onclick="notify('✅ Saved!')">Save</button>
+          </div>
+          <div class="card" id="settings-security" style="display:none">
+            <div class="section-title" style="margin-bottom:14px">Security</div>
+            <div class="form-group-s"><label class="form-label-s">Current Password</label><input class="form-input-s" type="password" placeholder="Current password"/></div>
+            <div class="form-group-s"><label class="form-label-s">New Password</label><input class="form-input-s" type="password" placeholder="New password"/></div>
+            <button class="btn btn-primary" onclick="notify('✅ Updated!')">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="notif-bar" id="notif"></div>
+
+<script src="app.js"></script>
+<script>
+  const NGO_REQ = [12,18,14,22,16,28,20];
+  const NGO_FUL = [10,15,12,20,14,25,18];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    buildBrowseGrid('ngoBrowseGrid', 'btn-primary', 'Request for NGO');
+    buildBarChart('ngoChart', NGO_REQ, NGO_FUL, 'purple', 'green');
+  });
+</script>
+</body>
+</html>

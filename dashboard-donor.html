@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share Hands – Donor Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="dashboard-wrap">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">🤝</div>
+      <h1>Share<span>Hands</span></h1>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">My Account</div>
+      <div class="nav-item active" onclick="showPage('donor','home',this)"><i class="fas fa-th-large"></i>Home</div>
+      <div class="nav-item" onclick="showPage('donor','donate',this)"><i class="fas fa-gift"></i>Donate an Item</div>
+      <div class="nav-item" onclick="showPage('donor','my-donations',this)"><i class="fas fa-box-open"></i>My Donations</div>
+      <div class="nav-item" onclick="showPage('donor','browse',this)"><i class="fas fa-search"></i>Browse Items</div>
+      <div class="nav-item" onclick="showPage('donor','map',this)"><i class="fas fa-map-marker-alt"></i>Map</div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <div class="nav-item" onclick="showPage('donor','profile',this)"><i class="fas fa-user"></i>My Profile</div>
+      <div class="nav-item" onclick="showPage('donor','notifications',this)"><i class="fas fa-bell"></i>Notifications<span class="badge">3</span></div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="admin-card">
+        <div class="admin-avatar" style="color:var(--green-light)">🤝</div>
+        <div class="admin-info"><h4>Sara Ahmed</h4><p>Donor Member</p></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-title">Share<span>Hands</span><span class="topbar-badge">Donor Portal</span></div>
+      <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search items…"/></div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="notify('3 notifications')"><i class="fas fa-bell"></i><div class="dot"></div></button>
+        <div class="topbar-avatar">👦</div>
+        <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i>Logout</button>
+      </div>
+    </div>
+
+    <!-- ════ HOME ════ -->
+    <div class="page active" id="donor-page-home">
+      <div class="page-header">
+        <div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Dashboard</span></div>
+        <h2>Hello, Sara! 👋</h2>
+        <p>Thank you for being part of our community.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon green">📦</div><div class="stat-value">24</div><div class="stat-label">Items Donated</div><div class="stat-change up"><i class="fas fa-arrow-up"></i>+3 this month</div></div>
+        <div class="stat-card blue"><div class="stat-icon blue">✅</div><div class="stat-value">21</div><div class="stat-label">Fulfilled</div><div class="stat-change up"><i class="fas fa-arrow-up"></i>87%</div></div>
+        <div class="stat-card orange"><div class="stat-icon orange">⏳</div><div class="stat-value">3</div><div class="stat-label">Pending</div></div>
+        <div class="stat-card red"><div class="stat-icon red">⭐</div><div class="stat-value">4.9</div><div class="stat-label">My Rating</div></div>
+      </div>
+      <!-- Impact banner -->
+      <div style="background:linear-gradient(135deg,var(--green-dark),var(--green-mid));border-radius:var(--radius);padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:18px;color:white">
+        <div style="font-size:44px">🌟</div>
+        <div><div style="font-size:15px;font-weight:700;margin-bottom:3px">You're making a real difference!</div><div style="font-size:12.5px;opacity:.7">Your 24 donations helped <strong style="opacity:1">21 families</strong> in need.</div></div>
+        <button class="btn" style="margin-left:auto;background:rgba(255,255,255,.15);color:white;border:1.5px solid rgba(255,255,255,.3);flex-shrink:0;font-size:12px" onclick="showPage('donor','donate',null)">Donate Now</button>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div class="section-header"><div class="section-title">Recent Donations</div><button class="btn btn-outline" onclick="showPage('donor','my-donations',null)">View All</button></div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--cream-dark);border-radius:9px"><div style="width:38px;height:38px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:19px">👕</div><div style="flex:1"><div style="font-size:12.5px;font-weight:700">Winter Jacket</div><div style="font-size:11px;color:var(--text-light)">Apr 5, 2025</div></div><span class="badge-status available">Available</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--cream-dark);border-radius:9px"><div style="width:38px;height:38px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:19px">👗</div><div style="flex:1"><div style="font-size:12.5px;font-weight:700">Summer Dresses</div><div style="font-size:11px;color:var(--text-light)">Apr 1, 2025</div></div><span class="badge-status taken">Taken</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--cream-dark);border-radius:9px"><div style="width:38px;height:38px;border-radius:8px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:19px">👔</div><div style="flex:1"><div style="font-size:12.5px;font-weight:700">Men's Shirts</div><div style="font-size:11px;color:var(--text-light)">Mar 28, 2025</div></div><span class="badge-status taken">Taken</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="section-header"><div class="section-title">Activity</div></div>
+          <div class="activity-list">
+            <div class="activity-item"><div class="activity-icon green">✅</div><div><div class="activity-text"><strong>Winter Jacket</strong> approved by admin.</div><div class="activity-time">2 hours ago</div></div></div>
+            <div class="activity-item"><div class="activity-icon blue">📦</div><div><div class="activity-text"><strong>Summer Dresses</strong> picked up.</div><div class="activity-time">Yesterday</div></div></div>
+            <div class="activity-item"><div class="activity-icon orange">⭐</div><div><div class="activity-text">You received a <strong>5-star rating!</strong></div><div class="activity-time">2 days ago</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ DONATE ════ -->
+    <div class="page" id="donor-page-donate">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Donate</span></div><h2>Donate an Item</h2><p>Share something you no longer need.</p></div>
+      <div style="background:var(--white);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);border:1px solid var(--cream-dark);max-width:640px">
+        <div style="font-size:13.5px;font-weight:700;margin-bottom:12px">Select Category</div>
+        <div class="category-grid">
+          <div class="cat-option selected" onclick="selectCat(this)"><div class="cat-icon">👕</div><div class="cat-label">Clothing</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">📚</div><div class="cat-label">Books</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🛏️</div><div class="cat-label">Furniture</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">💻</div><div class="cat-label">Electronics</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🍳</div><div class="cat-label">Kitchen</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🧸</div><div class="cat-label">Toys</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">🏋️</div><div class="cat-label">Sports</div></div>
+          <div class="cat-option" onclick="selectCat(this)"><div class="cat-icon">📦</div><div class="cat-label">Other</div></div>
+        </div>
+        <div class="form-group-s"><label class="form-label-s">Item Name</label><input class="form-input-s" placeholder="e.g. Winter Jacket…"/></div>
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">Condition</label><select class="form-input-s" style="cursor:pointer"><option>Like New</option><option>Good</option><option>Fair</option></select></div>
+          <div class="form-group-s"><label class="form-label-s">Quantity</label><input class="form-input-s" type="number" value="1" min="1"/></div>
+        </div>
+        <div class="form-group-s"><label class="form-label-s">Description</label><textarea class="form-input-s" rows="3" placeholder="Describe the item…" style="resize:vertical"></textarea></div>
+        <div class="form-group-s"><label class="form-label-s">Pickup Location</label><input class="form-input-s" placeholder="Your address or area…"/></div>
+        <div style="display:flex;gap:9px;margin-top:4px">
+          <button class="btn btn-primary" onclick="notify('🎉 Donation submitted! Thank you!')">Submit Donation</button>
+          <button class="btn btn-outline" onclick="notify('Draft saved')">Save Draft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ MY DONATIONS ════ -->
+    <div class="page" id="donor-page-my-donations">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">My Donations</span></div><h2>My Donations</h2></div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter(this)">All</button>
+        <button class="filter-btn" onclick="setFilter(this)">Available</button>
+        <button class="filter-btn" onclick="setFilter(this)">Pending</button>
+        <button class="filter-btn" onclick="setFilter(this)">Taken</button>
+        <button class="btn btn-primary" style="margin-left:auto" onclick="showPage('donor','donate',null)"><i class="fas fa-plus"></i> Add New</button>
+      </div>
+      <div class="card"><div class="table-wrap"><table>
+        <thead><tr><th>Item</th><th>Category</th><th>Condition</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr><td><div class="item-cell"><div class="item-img">👕</div><div><div class="item-name">Winter Jacket</div></div></div></td><td>Clothing</td><td>Like New</td><td><span class="badge-status available">Available</span></td><td style="color:var(--text-light);font-size:11px">Apr 5</td><td><div class="action-btns"><button class="action-btn edit" onclick="notify('Editing')"><i class="fas fa-pen"></i></button><button class="action-btn delete" onclick="notify('Removed')"><i class="fas fa-trash"></i></button></div></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">👗</div><div><div class="item-name">Summer Dresses</div></div></div></td><td>Clothing</td><td>Good</td><td><span class="badge-status taken">Taken</span></td><td style="color:var(--text-light);font-size:11px">Apr 1</td><td><div class="action-btns"><button class="action-btn edit" onclick="notify('Editing')"><i class="fas fa-pen"></i></button><button class="action-btn delete" onclick="notify('Removed')"><i class="fas fa-trash"></i></button></div></td></tr>
+          <tr><td><div class="item-cell"><div class="item-img">👔</div><div><div class="item-name">Men's Shirts (5)</div></div></div></td><td>Clothing</td><td>Good</td><td><span class="badge-status taken">Taken</span></td><td style="color:var(--text-light);font-size:11px">Mar 28</td><td><div class="action-btns"><button class="action-btn edit" onclick="notify('Editing')"><i class="fas fa-pen"></i></button><button class="action-btn delete" onclick="notify('Removed')"><i class="fas fa-trash"></i></button></div></td></tr>
+        </tbody>
+      </table></div></div>
+    </div>
+
+    <!-- ════ BROWSE ════ -->
+    <div class="page" id="donor-page-browse">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Browse</span></div><h2>Browse Available Items</h2></div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter(this)">All</button>
+        <button class="filter-btn" onclick="setFilter(this)">👕 Clothing</button>
+        <button class="filter-btn" onclick="setFilter(this)">📚 Books</button>
+        <button class="filter-btn" onclick="setFilter(this)">🛏️ Furniture</button>
+        <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"/></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:13px" id="donorBrowseGrid"></div>
+    </div>
+
+    <!-- ════ MAP ════ -->
+    <div class="page" id="donor-page-map">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Map</span></div><h2>Nearby Donations</h2></div>
+      <div class="map-placeholder"><div class="map-grid"></div><div class="map-pins">
+        <div class="map-pin" style="top:30%;left:25%" onclick="notify('📍 Downtown – 3 items')"><i class="fas fa-map-marker-alt"></i><div class="map-pin-label">Downtown (3)</div></div>
+        <div class="map-pin" style="top:50%;left:55%" onclick="notify('📍 Midtown – 7 items')"><i class="fas fa-map-marker-alt"></i><div class="map-pin-label">Midtown (7)</div></div>
+      </div></div>
+    </div>
+
+    <!-- ════ PROFILE ════ -->
+    <div class="page" id="donor-page-profile">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Profile</span></div><h2>My Profile</h2></div>
+      <div style="background:var(--white);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);border:1px solid var(--cream-dark);text-align:center;margin-bottom:16px">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--green-pale);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;border:3px solid var(--green-light)">👦</div>
+        <div style="font-size:17px;font-weight:800">Sara Ahmed</div>
+        <div style="font-size:12px;color:var(--text-light);margin-bottom:12px">sara.ahmed@email.com</div>
+        <div style="display:flex;justify-content:center;gap:28px">
+          <div><div style="font-size:20px;font-weight:800;color:var(--green-mid)">24</div><div style="font-size:10px;color:var(--text-light)">Donated</div></div>
+          <div><div style="font-size:20px;font-weight:800;color:var(--green-mid)">21</div><div style="font-size:10px;color:var(--text-light)">Fulfilled</div></div>
+          <div><div style="font-size:20px;font-weight:800;color:var(--green-mid)">4.9⭐</div><div style="font-size:10px;color:var(--text-light)">Rating</div></div>
+        </div>
+      </div>
+      <div class="card" style="max-width:560px">
+        <div class="form-row">
+          <div class="form-group-s"><label class="form-label-s">First Name</label><input class="form-input-s" value="Sara"/></div>
+          <div class="form-group-s"><label class="form-label-s">Last Name</label><input class="form-input-s" value="Ahmed"/></div>
+        </div>
+        <div class="form-group-s"><label class="form-label-s">Email</label><input class="form-input-s" value="sara.ahmed@email.com"/></div>
+        <div class="form-group-s"><label class="form-label-s">City</label><input class="form-input-s" value="Downtown"/></div>
+        <button class="btn btn-primary" onclick="notify('✅ Profile updated!')">Save</button>
+      </div>
+    </div>
+
+    <!-- ════ NOTIFICATIONS ════ -->
+    <div class="page" id="donor-page-notifications">
+      <div class="page-header"><div class="breadcrumb"><span>Home</span><i class="fas fa-chevron-right" style="font-size:8px"></i><span class="current">Notifications</span></div><h2>Notifications</h2></div>
+      <div class="card">
+        <div class="activity-list" style="gap:0">
+          <div style="padding:14px;background:var(--green-pale);border-radius:8px;margin-bottom:8px">
+            <div class="activity-item"><div class="activity-icon green">✅</div><div><div class="activity-text"><strong>Winter Jacket approved</strong> – now visible to recipients.</div><div class="activity-time">2 hours ago · Unread</div></div></div>
+          </div>
+          <div style="padding:14px;background:var(--green-pale);border-radius:8px;margin-bottom:8px">
+            <div class="activity-item"><div class="activity-icon blue">📦</div><div><div class="activity-text"><strong>Summer Dresses</strong> picked up by recipient.</div><div class="activity-time">Yesterday · Unread</div></div></div>
+          </div>
+          <div style="padding:14px;border-bottom:1px solid var(--cream-dark)">
+            <div class="activity-item"><div class="activity-icon orange">⭐</div><div><div class="activity-text">You received a <strong>5-star review!</strong></div><div class="activity-time">2 days ago · Read</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="notif-bar" id="notif"></div>
+
+<script src="app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    buildBrowseGrid('donorBrowseGrid', 'btn-primary', 'Request Item');
+  });
+</script>
+</body>
+</html>

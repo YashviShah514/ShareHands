@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share Hands – Connecting Hearts</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="hp-nav">
+  <a class="hp-nav-logo" href="index.html">
+    <div class="ico">🤝</div>
+    <span>Share<em>Hands</em></span>
+  </a>
+  <div class="hp-nav-links">
+    <a class="hp-nav-link" onclick="scrollToSection('how')">How It Works</a>
+    <a class="hp-nav-link" onclick="scrollToSection('who')">Who We Serve</a>
+    <a class="hp-nav-link" onclick="scrollToSection('impact')">Impact</a>
+    <a class="hp-nav-link" onclick="scrollToSection('partners')">Partners</a>
+    <a class="hp-nav-link" onclick="scrollToSection('testimonials')">Stories</a>
+  </div>
+  <div class="hp-nav-cta">
+    <button class="btn-ghost" onclick="window.location.href='login.html'">Login</button>
+    <button class="btn-solid" onclick="window.location.href='register.html'">Get Started</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hp-hero" id="hero">
+  <div class="hero-bg-circles">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🌍 Serving communities since 2022</div>
+    <h1 class="hero-title">Share More.<br/>Give <span class="hl">Hope.</span><br/>Change Lives.</h1>
+    <p class="hero-sub">Share Hands connects generous donors, trusted NGOs, and communities in need — making giving simple, transparent, and impactful.</p>
+    <div class="hero-btns">
+      <button class="hero-btn-primary" onclick="window.location.href='register.html'">Start Donating Today</button>
+      <button class="hero-btn-secondary" onclick="scrollToSection('how')">
+        <i class="fas fa-play-circle"></i> How It Works
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-val">12K+</div><div class="hero-stat-lbl">Items Donated</div></div>
+      <div><div class="hero-stat-val">4.8K</div><div class="hero-stat-lbl">Active Users</div></div>
+      <div><div class="hero-stat-val">120+</div><div class="hero-stat-lbl">NGO Partners</div></div>
+      <div><div class="hero-stat-val">98%</div><div class="hero-stat-lbl">Satisfaction</div></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-float-card">
+      <div class="hfc-header">
+        <div class="hfc-icon g">🤝</div>
+        <div><div class="hfc-title">Latest Donation</div><div class="hfc-sub">2 minutes ago</div></div>
+      </div>
+      <div class="hfc-stat">Winter Jacket</div>
+      <div class="hfc-desc">Donated by Sara A. · Downtown Center</div>
+    </div>
+    <div class="hero-float-card">
+      <div class="hfc-header">
+        <div class="hfc-icon o">🏢</div>
+        <div><div class="hfc-title">NGO Activity</div><div class="hfc-sub">This week</div></div>
+      </div>
+      <div class="hfc-stat">34 NGOs</div>
+      <div class="hfc-desc">Active requests being fulfilled right now</div>
+    </div>
+    <div class="hero-float-card">
+      <div class="hfc-header">
+        <div class="hfc-icon b">📦</div>
+        <div><div class="hfc-title">Items Available</div><div class="hfc-sub">Near you</div></div>
+      </div>
+      <div class="hfc-stat">248 Items</div>
+      <div class="hfc-desc">Ready for pickup · 14 active pickup centers</div>
+    </div>
+    <div class="hero-float-card">
+      <div class="hfc-header">
+        <div class="hfc-icon p">⭐</div>
+        <div><div class="hfc-title">Community Rating</div><div class="hfc-sub">Average score</div></div>
+      </div>
+      <div class="hfc-stat">4.9 / 5.0</div>
+      <div class="hfc-desc">Based on 3,240 verified reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="hp-section" id="how">
+  <div class="section-label">✨ Simple Process</div>
+  <h2 class="section-heading">How Share<span class="hl">Hands</span> Works</h2>
+  <p class="section-sub">Getting started is easy. Whether you're a donor, recipient, or NGO — our platform makes giving and receiving seamless.</p>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">📝</div>
+      <h3 class="how-title">Create an Account</h3>
+      <p class="how-desc">Sign up as a Donor, NGO, or Admin in under 2 minutes. Verify your identity and get started.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">📦</div>
+      <h3 class="how-title">List or Request Items</h3>
+      <p class="how-desc">Donors list items they no longer need. NGOs and recipients browse and request what their community needs most.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">✅</div>
+      <h3 class="how-title">Get Approved</h3>
+      <p class="how-desc">Our admin team reviews listings and requests to ensure quality and legitimacy before connecting parties.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">🤝</div>
+      <h3 class="how-title">Deliver &amp; Impact</h3>
+      <p class="how-desc">Items are picked up or delivered to centers. Donors get real-time updates and impact reports.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHO WE SERVE ── -->
+<section class="hp-section alt" id="who">
+  <div style="text-align:center">
+    <div class="section-label" style="margin:0 auto 16px">👥 Our Community</div>
+    <h2 class="section-heading">Who We <span class="hl">Serve</span></h2>
+    <p class="section-sub" style="margin:0 auto">Share Hands is built for everyone who wants to give or receive with dignity and ease.</p>
+  </div>
+  <div class="serve-grid">
+    <div class="serve-card c1">
+      <div class="serve-icon">🤝</div>
+      <h3 class="serve-title">Donors</h3>
+      <p class="serve-desc">Have clothes, books, furniture, or electronics you no longer use? List them in minutes and see them go to someone who truly needs them. Track your impact in real time.</p>
+      <button class="serve-btn g" onclick="window.location.href='register.html'">Donate an Item</button>
+    </div>
+    <div class="serve-card c2">
+      <div class="serve-icon">🏢</div>
+      <h3 class="serve-title">NGOs &amp; Charities</h3>
+      <p class="serve-desc">Partner with Share Hands to source donated goods for the communities you serve. Manage requests, track fulfillment, and measure your outreach impact — all in one place.</p>
+      <button class="serve-btn b" onclick="window.location.href='register.html'">Register Your NGO</button>
+    </div>
+    <div class="serve-card c3">
+      <div class="serve-icon">🔑</div>
+      <h3 class="serve-title">Administrators</h3>
+      <p class="serve-desc">Platform admins verify users, approve donations, manage NGO partnerships, oversee logistics, and ensure the highest standards of transparency and trust across the platform.</p>
+      <button class="serve-btn p" onclick="window.location.href='login.html'">Admin Login</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── IMPACT ── -->
+<section class="impact-section" id="impact">
+  <div style="text-align:center">
+    <div class="section-label" style="margin:0 auto 16px;background:rgba(82,183,136,.2);border-color:rgba(82,183,136,.4)">📊 Our Impact</div>
+    <h2 class="section-heading" style="color:#fff">Numbers That <span style="color:var(--green-light)">Matter</span></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.55);margin:0 auto">Every item donated, every request fulfilled — it all adds up to real change in real lives.</p>
+  </div>
+  <div class="impact-grid">
+    <div class="impact-item"><div class="impact-val" id="cnt1">0</div><div class="impact-label">Items Donated Total</div></div>
+    <div class="impact-item"><div class="impact-val" id="cnt2">0</div><div class="impact-label">Families Helped</div></div>
+    <div class="impact-item"><div class="impact-val" id="cnt3">0</div><div class="impact-label">NGO Partners</div></div>
+    <div class="impact-item"><div class="impact-val" id="cnt4">0</div><div class="impact-label">Cities Covered</div></div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="hp-section" id="testimonials">
+  <div class="section-label">💬 Stories</div>
+  <h2 class="section-heading">Real People, Real <span class="hl">Impact</span></h2>
+  <p class="section-sub">Hear from donors, NGO partners, and recipients who have experienced the power of sharing.</p>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"I donated 30 items last winter and received updates as each one found a home. The transparency is unlike any other platform. I'll never stop donating through Share Hands."</p>
+      <div class="test-author"><div class="test-avatar">👩</div><div><div class="test-name">Sara Ahmed</div><div class="test-role">Donor · 24 items donated</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"Our NGO has served 400+ families using items sourced through Share Hands. The NGO dashboard is incredible — we can track everything from requests to fulfillment in one place."</p>
+      <div class="test-author"><div class="test-avatar">👨</div><div><div class="test-name">Dr. Karim Mansour</div><div class="test-role">Director · Hope Foundation</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <p class="test-text">"As a single mother, receiving a bed frame and winter clothes for my kids through Share Hands was life-changing. I am so grateful for every donor on this platform."</p>
+      <div class="test-author"><div class="test-avatar">🧕</div><div><div class="test-name">Nour Al-Salem</div><div class="test-role">Recipient · 3 items received</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARTNERS ── -->
+<div class="partners-strip" id="partners">
+  <div class="partners-label">Trusted NGO Partners</div>
+  <div class="partners-logos">
+    <div class="partner-logo">🏥 Hope Foundation</div>
+    <div class="partner-logo">🌱 GreenAid Society</div>
+    <div class="partner-logo">📚 EduCare NGO</div>
+    <div class="partner-logo">🤲 Relief Connect</div>
+    <div class="partner-logo">🏠 HomeFirst Charity</div>
+    <div class="partner-logo">👕 ClothingForAll</div>
+  </div>
+</div>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="cta-content">
+    <h2 class="cta-title">Ready to Make a Difference?</h2>
+    <p class="cta-sub">Join over 4,800 donors, 120 NGO partners, and countless recipients already changing lives through Share Hands.</p>
+    <div class="cta-btns">
+      <button class="cta-btn-w" onclick="window.location.href='register.html'">🤝 Start Donating</button>
+      <button class="cta-btn-o" onclick="window.location.href='register.html'">🏢 Register Your NGO</button>
+      <button class="cta-btn-o" onclick="window.location.href='login.html'">🔑 Admin Login</button>
+    </div>
+  </div>
+  <div style="font-size:120px;opacity:.15">🤝</div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="hp-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Share<span>Hands</span></h3>
+      <p>A community-driven platform that connects generous donors with communities in need through trusted NGO partnerships and transparent technology.</p>
+      <div class="footer-socials">
+        <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+        <div class="social-btn"><i class="fab fa-twitter"></i></div>
+        <div class="social-btn"><i class="fab fa-instagram"></i></div>
+        <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a class="footer-link" onclick="scrollToSection('how')">How It Works</a>
+      <a class="footer-link" onclick="scrollToSection('who')">Who We Serve</a>
+      <a class="footer-link" onclick="scrollToSection('impact')">Our Impact</a>
+      <a class="footer-link" onclick="scrollToSection('partners')">NGO Partners</a>
+    </div>
+    <div class="footer-col">
+      <h4>Get Started</h4>
+      <a class="footer-link" href="register.html">Donate an Item</a>
+      <a class="footer-link" href="register.html">Register as NGO</a>
+      <a class="footer-link" href="login.html">Login</a>
+      <a class="footer-link" onclick="notify('FAQ coming soon!')">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a class="footer-link" onclick="notify('Privacy Policy')">Privacy Policy</a>
+      <a class="footer-link" onclick="notify('Terms of Service')">Terms of Service</a>
+      <a class="footer-link" onclick="notify('Cookie Policy')">Cookie Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Share Hands. All rights reserved. Made with ❤️ for communities.</div>
+    <div class="footer-copy">🌍 Serving 14 cities worldwide</div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="notif-bar" id="notif"></div>
+
+<script src="app.js"></script>
+<script>
+  /* Counter animation on scroll */
+  const counterTargets = {
+    cnt1: [12480, '+'], cnt2: [4832, ''],
+    cnt3: [120, ''],   cnt4: [14, '']
+  };
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        Object.entries(counterTargets).forEach(([id, [val, sfx]]) => animateCounter(id, val, sfx));
+        io.disconnect();
+      }
+    });
+  }, { threshold: .3 });
+  const impactGrid = document.querySelector('.impact-grid');
+  if (impactGrid) io.observe(impactGrid);
+</script>
+</body>
+</html>
